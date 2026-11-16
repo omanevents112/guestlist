@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="format-detection" content="telephone=no">
+  <title>THURSDAY TAKEOVER — OmanEvents Guest List</title>
+  <meta name="description" content="Join the THURSDAY TAKEOVER guest list at Le Blue Muscat, Qurum Resort. 11 PM till late. 21+ with ID.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Tajawal:wght@400;500;700&display=swap">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23000' width='32' height='32'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='14' fill='%23C9A227'%3EOE%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-soft: #0c0c0d;
+      --panel: #121214;
+      --panel-2: #1a1a1a;
+      --gold: #c9a227;
+      --gold-soft: #e8d48b;
+      --gold-dim: #8a7018;
+      --crimson: #8b1538;
+      --crimson-deep: #4a0a1c;
+      --silver: #c5c5ce;
+      --chrome: #8d8d97;
+      --text: #f6f6f4;
+      --muted: #a3a3ab;
+      --line: rgba(197, 197, 206, 0.22);
+      --danger: #e8b4c0;
+      --radius: 18px;
+      --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+      --font-sans: Tajawal, "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--text); min-height: 100%; max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(1200px 500px at 50% -10%, rgba(201, 162, 39, 0.16), transparent 60%),
+        radial-gradient(800px 420px at 100% 100%, rgba(139, 21, 56, 0.22), transparent 55%),
+        radial-gradient(600px 300px at 0% 80%, rgba(197, 197, 206, 0.06), transparent 50%),
+        #000;
+    }
+    .bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(42rem, calc(100% - 2rem));
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1.15rem 0 3.5rem;
+      overflow-x: hidden;
+    }
+
+    header.top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.35rem 0 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      flex: none;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.15rem; }
+    .brand-name {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      color: var(--gold);
+    }
+    .brand-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      background: rgba(18, 18, 20, 0.8);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-toggle button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      min-height: 36px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .lang-toggle button[aria-pressed="true"] {
+      background: linear-gradient(180deg, #ebe6dc, #c5c5ce 45%, #8d8d97);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .hero { text-align: center; padding: 0.4rem 0 1.35rem; }
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.7rem;
+    }
+    h1, h1.event-title {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: clamp(2.05rem, 8vw, 3.4rem);
+      line-height: 0.96;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      hyphens: manual;
+    }
+    .hero-kicker {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin: 0 0 0.75rem;
+    }
+    .lineup {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      list-style: none;
+      margin: 0 auto 1.1rem;
+      max-width: 28rem;
+      padding: 0;
+    }
+    .lineup[hidden] { display: none !important; }
+    .lineup li {
+      border: 1px solid rgba(201, 162, 39, 0.38);
+      background: linear-gradient(180deg, rgba(32,32,34,0.95), rgba(10,10,10,0.95));
+      color: var(--gold-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.66rem;
+      font-weight: 700;
+      line-height: 1.35;
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+    .lineup .act-note {
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      color: var(--silver);
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+    }
+    html[dir="rtl"] .lineup .act-note { font-family: var(--font-sans); font-style: normal; }
+    .lede {
+      color: var(--muted);
+      max-width: 28rem;
+      margin: 0 auto 1.15rem;
+      font-size: 0.98rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+      margin: 0 auto 0.4rem;
+      max-width: 28rem;
+    }
+    .meta-item {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(26,26,26,0.9), rgba(8,8,8,0.9));
+      border-radius: 12px;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .meta-item dt {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chrome);
+    }
+    .meta-item dd { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    .meta-item .soon { color: var(--gold-soft); font-style: italic; font-family: var(--font-serif); font-size: 1.05rem; }
+
+    .card {
+      margin-top: 1.4rem;
+      padding: 1.25rem 1.1rem 1.4rem;
+      border-radius: var(--radius);
+      position: relative;
+      background:
+        linear-gradient(#141416, #0b0b0c) padding-box,
+        linear-gradient(135deg, #f0f0f4, #8a8a92 30%, #c9a227 52%, #8a8a92 74%, #d7d7de) border-box;
+      border: 1px solid transparent;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .card h2, .reserve h2 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.7rem;
+      color: var(--gold-soft);
+      margin-bottom: 0.35rem;
+    }
+    .card-lead { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.15rem; }
+
+    .form-error, .banner {
+      display: none;
+      margin-bottom: 1rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 21, 56, 0.55);
+      background: rgba(74, 10, 28, 0.45);
+      color: var(--danger);
+      font-size: 0.92rem;
+    }
+    .form-error.is-on, .banner.is-on { display: block; }
+
+    .field { margin-bottom: 0.95rem; }
+    .field label, .check label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 0.4rem;
+    }
+    .hint { display: block; margin-top: 0.28rem; color: var(--chrome); font-size: 0.8rem; letter-spacing: 0; text-transform: none; }
+    .field-error { display: none; margin-top: 0.28rem; color: var(--danger); font-size: 0.8rem; }
+    .field.has-error .field-error { display: block; }
+    .field.has-error .control, .field.has-error input, .field.has-error select {
+      border-color: rgba(232, 180, 192, 0.7);
+    }
+
+    input, select {
+      width: 100%;
+      appearance: none;
+      background: #09090a;
+      color: var(--text);
+      font: 500 16px/1.4 var(--font-sans);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      min-height: 48px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A227' d='M1 1l5 5 5-5' stroke='%23C9A227' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.95rem center;
+      padding-inline-end: 2.4rem;
+    }
+    html[dir="rtl"] select { background-position: left 0.95rem center; }
+    input::placeholder { color: #6d6d75; }
+    input:hover, select:hover { border-color: rgba(201, 162, 39, 0.45); }
+    input:focus, select:focus, button:focus-visible, .lang-toggle button:focus-visible, .check input:focus-visible {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.28);
+    }
+
+    .phone, #phone, #instagram { direction: ltr; text-align: left; }
+    .phone {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .phone-prefix {
+      flex: none;
+      min-width: 5.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #09090a;
+      color: var(--gold-soft);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .check {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.85rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #09090a;
+      margin-bottom: 0.7rem;
+    }
+    .check input {
+      width: 1.2rem;
+      height: 1.2rem;
+      min-height: 0;
+      margin-top: 0.15rem;
+      flex: none;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .check .copy { color: var(--text); font-size: 0.9rem; line-height: 1.45; text-transform: none; letter-spacing: 0; }
+    .check .copy .alt {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+    .check.req { border-color: rgba(201, 162, 39, 0.35); }
+    .field.has-error .check { border-color: rgba(232, 180, 192, 0.7); }
+
+    .hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .submit {
+      width: 100%;
+      margin-top: 0.5rem;
+      min-height: 52px;
+      border: 0;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #111;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #f3e7b3, #c9a227 46%, #8a7018);
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255,255,255,0.45);
+      transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+    }
+    .submit:hover { filter: brightness(1.06); }
+    .submit:active { transform: scale(0.98); box-shadow: 0 4px 12px rgba(201, 162, 39, 0.2); }
+    .submit[disabled] { opacity: 0.65; cursor: wait; transform: none; }
+
+    .fine {
+      margin-top: 0.9rem;
+      text-align: center;
+      color: var(--chrome);
+      font-size: 0.8rem;
+    }
+    .fine a { color: var(--gold-soft); text-decoration: none; }
+    .fine a:hover { text-decoration: underline; }
+
+    .reserve { text-align: center; padding: 1.6rem 0.6rem 0.6rem; }
+    .seal {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      background: radial-gradient(circle at 35% 30%, #2a2a2e, #0a0a0a 65%);
+      border: 1px solid transparent;
+      background-image:
+        radial-gradient(circle at 35% 30%, #2a2a2e, #0a0a0a 65%),
+        linear-gradient(135deg, #f3e7b3, #8a8a92, #c9a227, #8a8a92);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: 0 0 0 6px rgba(201,162,39,0.08), 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .kicker {
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 0.45rem;
+    }
+    .reserve h2 { font-size: 2.2rem; margin-bottom: 0.35rem; }
+    .reserve-name {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--gold-soft);
+      margin-bottom: 0.9rem;
+    }
+    .reserve-body { color: var(--muted); margin: 0 auto 0.5rem; max-width: 28rem; }
+    .gold-rule {
+      width: 72px;
+      height: 1px;
+      margin: 1.1rem auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    footer {
+      margin-top: 1.8rem;
+      text-align: center;
+      color: var(--chrome);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    [hidden] { display: none !important; }
+
+    html[dir="rtl"] body, html[lang="ar"] body { font-family: var(--font-sans); }
+    html[dir="rtl"] h2, html[dir="rtl"] .reserve-name, html[dir="rtl"] .soon, html[dir="rtl"] .hero-kicker {
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+    html[dir="rtl"] h1.event-title {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      letter-spacing: 0.045em;
+    }
+
+    @media (min-width: 640px) {
+      .meta { grid-template-columns: 1fr 1fr; }
+      .meta .span-all { grid-column: 1 / -1; }
+      .card { padding: 1.6rem 1.5rem 1.7rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card, .hero, header.top { animation: rise 0.6s ease both; }
+      .hero { animation-delay: 0.05s; }
+      .card { animation-delay: 0.12s; }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: none; }
+      }
+      .reserve.is-on .seal { animation: seal-in 0.6s ease both; }
+      @keyframes seal-in {
+        from { opacity: 0; transform: scale(0.88); }
+        to { opacity: 1; transform: none; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand" aria-label="OmanEvents">
+        <svg class="mark" viewBox="0 0 42 42" role="img" aria-hidden="true">
+          <circle cx="21" cy="21" r="20" fill="#000" stroke="#C9A227" stroke-width="1.2"/>
+          <text x="21" y="25.5" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-weight="700" fill="#C9A227">OE</text>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">OMAN EVENTS</span>
+          <span class="brand-sub">Live Entertainment</span>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="btn-en" aria-pressed="true" data-lang="en">EN</button>
+        <button type="button" id="btn-ar" aria-pressed="false" data-lang="ar">عربي</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow" data-i18n="eyebrow">Thursday Nights · Muscat</p>
+      <h1 class="event-title" id="event-name">THURSDAY TAKEOVER</h1>
+      <p class="hero-kicker" data-i18n="title">Guest List</p>
+      <p class="lede" data-i18n="lede">Afro, hip-hop, R&amp;B and international. 21+ with valid ID. Get your name on the door list.</p>
+      <ul class="lineup" id="lineup" aria-label="Lineup"></ul>
+      <dl class="meta" id="event-meta"></dl>
+    </section>
+
+    <div class="card" id="form-card">
+      <h2 data-i18n="formTitle">Reserve your place</h2>
+      <p class="card-lead" data-i18n="formLead">Fill this in for yourself. Each friend who should be on the list needs their own signup.</p>
+      <div class="form-error" id="form-error" role="alert"></div>
+
+      <form id="guest-form" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="field" data-field="eventDate">
+          <label for="eventDate" data-i18n="eventDate">Event date</label>
+          <select id="eventDate" name="eventDate" required></select>
+          <span class="field-error" data-i18n="errEventDate">Please choose an event date.</span>
+        </div>
+
+        <div class="field" data-field="name">
+          <label for="name" data-i18n="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="Name on the door list">
+          <span class="hint" data-i18n="nameHint">Name we should put on the door list.</span>
+          <span class="field-error" data-i18n="errName">Please enter your full name.</span>
+        </div>
+
+        <div class="field" data-field="phone">
+          <label for="phone" data-i18n="phone">WhatsApp number (+968 format)</label>
+          <div class="phone">
+            <span class="phone-prefix" aria-hidden="true">+968</span>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="16" required placeholder="97773122" aria-describedby="phone-hint">
+          </div>
+          <span class="hint" id="phone-hint" data-i18n="phoneHint">Eight digits, no spaces. Example: 97773122</span>
+          <span class="field-error" data-i18n="errPhone">Use +968 then 8 digits, no spaces. Example: +96897773122</span>
+        </div>
+
+        <div class="field" data-field="whatsappConsent">
+          <div class="check">
+            <input id="whatsappConsent" name="whatsappConsent" type="checkbox">
+            <label for="whatsappConsent" class="copy">
+              <span data-consent="en">I agree that OmanEvents may message me on WhatsApp about this event and future events. I can opt out anytime by replying STOP.</span>
+              <span class="alt" data-consent="ar">أوافق إن عمان إيفنتس يراسلني على واتساب عن هالحفلة وعن الفعاليات الجاية. أقدر أوقف الرسائل في أي وقت إذا رديت بكلمة STOP.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field" data-field="howHeard">
+          <label for="howHeard" data-i18n="howHeard">How did you hear about us?</label>
+          <select id="howHeard" name="howHeard" required>
+            <option value="" data-i18n="selectOne">Please select</option>
+            <option value="Instagram">Instagram</option>
+            <option value="WhatsApp group" data-i18n="hearWa">WhatsApp group</option>
+            <option value="Friend" data-i18n="hearFriend">Friend</option>
+            <option value="Promoter" data-i18n="hearPromoter">Promoter</option>
+            <option value="Venue" data-i18n="hearVenue">Venue</option>
+            <option value="Event listing" data-i18n="hearListing">Event listing</option>
+            <option value="Other" data-i18n="hearOther">Other</option>
+          </select>
+          <span class="field-error" data-i18n="errHear">Please tell us how you heard about us.</span>
+        </div>
+
+        <div class="field" data-field="eventInterest">
+          <label for="eventInterest" data-i18n="eventInterest">Event interest</label>
+          <select id="eventInterest" name="eventInterest" required>
+            <option value="" data-i18n="selectOne">Please select</option>
+            <option value="Thursday club nights" data-i18n="intThu">Thursday club nights</option>
+            <option value="Afro">Afro</option>
+            <option value="Hip-hop / R&amp;B">Hip-hop / R&amp;B</option>
+            <option value="International" data-i18n="intIntl">International</option>
+            <option value="This Thursday only" data-i18n="intThis">This Thursday only</option>
+            <option value="Not sure yet" data-i18n="intSure">Not sure yet</option>
+          </select>
+          <span class="field-error" data-i18n="errInterest">Please choose an event interest.</span>
+        </div>
+
+        <div class="field" data-field="entryTier">
+          <label for="entryTier" data-i18n="entryTier">Entry tier</label>
+          <select id="entryTier" name="entryTier" required>
+            <option value="" data-i18n="selectOne">Please select</option>
+            <option value="Guest list" data-i18n="tierGuest">Guest list</option>
+            <option value="Table" data-i18n="tierTable">Table</option>
+            <option value="Walk-in" data-i18n="tierWalk">Walk-in</option>
+          </select>
+          <span class="hint" data-i18n="tierHint">Table requests are confirmed on WhatsApp only if you opted in; otherwise we note it for the door.</span>
+          <span class="field-error" data-i18n="errTier">Please choose an entry tier.</span>
+        </div>
+
+        <div class="field" data-field="partySize">
+          <label for="partySize" data-i18n="partySize">Party size</label>
+          <input id="partySize" name="partySize" type="number" inputmode="numeric" min="1" max="20" step="1" required value="1">
+          <span class="hint" data-i18n="partyHint">How many people, including you?</span>
+          <span class="field-error" data-i18n="errParty">Party size must be between 1 and 20.</span>
+        </div>
+
+        <div class="field" data-field="instagram">
+          <label for="instagram" data-i18n="instagram">Instagram handle (optional)</label>
+          <input id="instagram" name="instagram" type="text" inputmode="text" autocomplete="off" maxlength="31" placeholder="@yourname">
+          <span class="hint" data-i18n="igHint">Optional. Example: @yourname</span>
+          <span class="field-error" data-i18n="errIg">Please enter a valid Instagram handle.</span>
+        </div>
+
+        <div class="field" data-field="ageConfirmed">
+          <div class="check req">
+            <input id="ageConfirmed" name="ageConfirmed" type="checkbox" required>
+            <label for="ageConfirmed" class="copy">
+              <span data-consent="en">I confirm I am 21 or older and will bring valid ID.</span>
+              <span class="alt" data-consent="ar">أؤكد أن عمري 21 سنة أو أكثر، وبأحضر إثبات عمر رسمي.</span>
+            </label>
+          </div>
+          <span class="field-error" data-i18n="errAge">You must confirm you are 21 or older.</span>
+        </div>
+
+        <button class="submit" type="submit" id="submit-btn" data-i18n="submit">Join the guest list</button>
+        <p class="fine" id="desk-line"></p>
+      </form>
+    </div>
+
+    <div class="card reserve" id="success-card" hidden>
+      <div class="seal">OE</div>
+      <p class="kicker">Luxe Reserve</p>
+      <h2 id="success-title" tabindex="-1" data-i18n="successTitle">You're on the list</h2>
+      <p class="reserve-name" id="success-name"></p>
+      <div class="gold-rule"></div>
+      <p class="reserve-body" id="success-body"></p>
+      <p class="reserve-body" id="success-wa"></p>
+      <p class="fine" id="success-desk"></p>
+    </div>
+
+    <footer data-i18n="footer">OmanEvents · Thursday nights in Muscat · 21+</footer>
+  </div>
+
+  <script>
+  (function () {
+    const CONFIG = {
+      eventName: "THURSDAY TAKEOVER",
+      eventNameAr: "THURSDAY TAKEOVER",
+      venue: "Le Blue Muscat, Qurum Resort",
+      venueAr: "Le Blue Muscat، منتجع القرم",
+      time: "11 PM till late",
+      timeAr: "من ١١ مساءً حتى وقت متأخر",
+      lineup: "SADO, POOYA & KRAZY, MC CHYDON, and MARALNI on live drums",
+      lineupAr: "SADO، POOYA & KRAZY، MC CHYDON، وMARALNI على الدرامز لايف",
+      price: "",
+      eventDate: "2026-11-19",
+      eventDates: ["2026-11-19","2026-11-26","2026-12-03","2026-12-10","2026-12-17","2026-12-24","2026-12-31"],
+      endpointUrl: "",
+      consentVersion: "wa-consent-v1-2026-11-16",
+      whatsappDesk: "+96897773122"
+    };
+
+    const REF_RE = /^OE-[A-Z0-9]{4,8}$/;
+    const SOURCE_RE = /^(DESK|IG-BIO|WA-STORY|REF|ADMIN-\d{2}|PROMO-\d{2}|VENUE-\d{2}|LIST-\d{2}|POST-\d{2})$/;
+    const ATTR_KEY = "oe_guestlist_attr";
+    const LANG_KEY = "oe_guestlist_lang";
+    const ATTR_TTL = 30 * 24 * 60 * 60 * 1000;
+    const startedAt = Date.now();
+
+    const I18N = {
+      en: {
+        eyebrow: "Thursday Nights · Muscat",
+        title: "Guest List",
+        lede: "Afro, hip-hop, R&B and international. 21+ with valid ID. Get your name on the door list.",
+        formTitle: "Reserve your place",
+        formLead: "Fill this in for yourself. Each friend who should be on the list needs their own signup.",
+        eventDate: "Event date",
+        name: "Full name",
+        nameHint: "Name we should put on the door list.",
+        phone: "WhatsApp number (+968 format)",
+        phoneHint: "Eight digits, no spaces. Example: 97773122",
+        howHeard: "How did you hear about us?",
+        selectOne: "Please select",
+        hearWa: "WhatsApp group",
+        hearFriend: "Friend",
+        hearPromoter: "Promoter",
+        hearVenue: "Venue",
+        hearListing: "Event listing",
+        hearOther: "Other",
+        eventInterest: "Event interest",
+        intThu: "Thursday club nights",
+        intIntl: "International",
+        intThis: "This Thursday only",
+        intSure: "Not sure yet",
+        entryTier: "Entry tier",
+        tierGuest: "Guest list",
+        tierTable: "Table",
+        tierWalk: "Walk-in",
+        tierHint: "Table requests are confirmed on WhatsApp only if you opted in; otherwise we note it for the door.",
+        partySize: "Party size",
+        partyHint: "How many people, including you?",
+        instagram: "Instagram handle (optional)",
+        igHint: "Optional. Example: @yourname",
+        submit: "Join the guest list",
+        submitting: "Reserving…",
+        footer: "OmanEvents · Thursday nights in Muscat · 21+",
+        metaDate: "Date",
+        metaVenue: "Venue",
+        metaTime: "Time",
+        metaPrice: "Entry",
+        soon: "Details announced soon",
+        errEventDate: "Please choose an event date.",
+        errName: "Please enter your full name.",
+        errPhone: "Use +968 then 8 digits, no spaces. Example: +96897773122",
+        errHear: "Please tell us how you heard about us.",
+        errInterest: "Please choose an event interest.",
+        errTier: "Please choose an entry tier.",
+        errParty: "Party size must be between 1 and 20.",
+        errIg: "Please enter a valid Instagram handle.",
+        errAge: "You must confirm you are 21 or older.",
+        errEndpoint: "Signups are not open on this page yet. Please try again later or WhatsApp {DESK}.",
+        errNetwork: "Something went wrong. Please try again, or WhatsApp {DESK}.",
+        errGeneric: "Please check the form and try again.",
+        already: "You are already on the guest list for this night.",
+        successTitle: "You're on the list",
+        successBody: "You're on the guest list for {EVENT} on {DATE}{VENUE}. Bring valid ID (21+).",
+        successSoon: " Details announced soon.",
+        successWaYes: "We'll message this WhatsApp number with a reminder.",
+        successWaNo: "We won't message you on WhatsApp.",
+        desk: "Tables or questions: WhatsApp {DESK}",
+        atVenue: " at {VENUE}"
+      },
+      ar: {
+        eyebrow: "ليالي الخميس · مسقط",
+        title: "القست ليست",
+        lede: "عمان إيفنتس — أفرو، هيب هوب، آر أند بي. سجّل في القست ليست. +21 مع إثبات عمر.",
+        formTitle: "احجز مكانك",
+        formLead: "عبّر عن نفسك فقط. كل صديق يبي يكون على القائمة لازم يسجّل لوحده.",
+        eventDate: "تاريخ الفعالية",
+        name: "الاسم الكامل",
+        nameHint: "الاسم اللي بينحط على قائمة الباب.",
+        phone: "رقم واتساب (صيغة +968)",
+        phoneHint: "ثمانية أرقام بدون مسافات. مثال: 97773122",
+        howHeard: "كيف سمعت عنا؟",
+        selectOne: "اختر",
+        hearWa: "مجموعة واتساب",
+        hearFriend: "صديق",
+        hearPromoter: "منظّم",
+        hearVenue: "المكان",
+        hearListing: "إعلان فعالية",
+        hearOther: "أخرى",
+        eventInterest: "اهتمامك",
+        intThu: "ليالي الخميس",
+        intIntl: "عالمي",
+        intThis: "هذا الخميس فقط",
+        intSure: "لست متأكداً بعد",
+        entryTier: "نوع الدخول",
+        tierGuest: "قست ليست",
+        tierTable: "طاولة",
+        tierWalk: "دخول مباشر",
+        tierHint: "طلبات الطاولات تتأكد على واتساب فقط إذا وافقت على الرسائل؛ وإلا نسجّلها للباب.",
+        partySize: "عدد الأشخاص",
+        partyHint: "كم شخص، بما فيك أنت؟",
+        instagram: "حساب إنستغرام (اختياري)",
+        igHint: "اختياري. مثال: @yourname",
+        submit: "سجّل في القست ليست",
+        submitting: "جارٍ الحجز…",
+        footer: "عمان إيفنتس · ليالي الخميس في مسقط · +21",
+        metaDate: "التاريخ",
+        metaVenue: "المكان",
+        metaTime: "الوقت",
+        metaPrice: "الدخول",
+        soon: "التفاصيل قريباً",
+        errEventDate: "الرجاء اختيار تاريخ الفعالية.",
+        errName: "الرجاء إدخال اسمك الكامل.",
+        errPhone: "استخدم +968 ثم 8 أرقام بدون مسافات. مثال: +96897773122",
+        errHear: "الرجاء إخبارنا كيف سمعت عنا.",
+        errInterest: "الرجاء اختيار اهتمامك.",
+        errTier: "الرجاء اختيار نوع الدخول.",
+        errParty: "عدد الأشخاص يجب أن يكون بين 1 و 20.",
+        errIg: "الرجاء إدخال حساب إنستغرام صحيح.",
+        errAge: "يجب أن تؤكد أن عمرك 21 سنة أو أكثر.",
+        errEndpoint: "التسجيل غير متاح على هذه الصفحة حالياً. حاول لاحقاً أو راسلنا على واتساب {DESK}.",
+        errNetwork: "حدث خطأ. حاول مرة أخرى، أو راسلنا على واتساب {DESK}.",
+        errGeneric: "الرجاء مراجعة النموذج والمحاولة مرة أخرى.",
+        already: "أنت أصلاً على القست ليست لهذه الليلة.",
+        successTitle: "أنت على القائمة",
+        successBody: "أنت على قست ليست {EVENT} ليلة {DATE}{VENUE}. أحضر إثبات عمر (+21).",
+        successSoon: " التفاصيل قريباً.",
+        successWaYes: "نرسل لك تذكير على نفس رقم الواتساب.",
+        successWaNo: "لن نراسلك على واتساب.",
+        desk: "للطاولات أو أي سؤال: واتساب {DESK}",
+        atVenue: " في {VENUE}"
+      }
+    };
+
+    let lang = "en";
+    let attr = { rawRef: "", utms: { utm_source: "", utm_medium: "", utm_campaign: "" }, source: "" };
+
+    function t(key) {
+      return (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
+    }
+
+    function deskPretty() {
+      const d = String(CONFIG.whatsappDesk || "+96897773122").replace(/\s/g, "");
+      if (/^\+968\d{8}$/.test(d)) return "+968 " + d.slice(4, 8) + " " + d.slice(8);
+      return d;
+    }
+
+    function withDesk(s) {
+      // Isolate the number so +968 stays in reading order in Arabic (RTL).
+      return s.replace(/\{DESK\}/g, "\u2066" + deskPretty() + "\u2069");
+    }
+
+    function formatDate(iso) {
+      const monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      const monthsAr = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+      const daysEn = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const daysAr = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+      const p = String(iso || "").split("-").map(Number);
+      if (p.length !== 3 || !p[0]) return iso || "";
+      const dt = new Date(Date.UTC(p[0], p[1] - 1, p[2]));
+      const day = dt.getUTCDay();
+      if (lang === "ar") return daysAr[day] + " " + p[2] + " " + monthsAr[p[1] - 1] + " " + p[0];
+      return daysEn[day] + " " + p[2] + " " + monthsEn[p[1] - 1].slice(0, 3) + " " + p[0];
+    }
+
+    function applyI18n() {
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") return;
+        el.textContent = t(key);
+      });
+      const name = document.getElementById("name");
+      name.placeholder = lang === "ar" ? "الاسم على قائمة الباب" : "Name on the door list";
+      document.getElementById("instagram").placeholder = "@yourname";
+      document.getElementById("desk-line").textContent = withDesk(t("desk"));
+      // Stacked consent: current language first, the other as .alt
+      document.querySelectorAll(".check").forEach((box) => {
+        const en = box.querySelector('[data-consent="en"]');
+        const ar = box.querySelector('[data-consent="ar"]');
+        if (!en || !ar) return;
+        if (lang === "ar") {
+          ar.classList.remove("alt");
+          en.classList.add("alt");
+          box.querySelector(".copy").insertBefore(ar, en);
+        } else {
+          en.classList.remove("alt");
+          ar.classList.add("alt");
+          box.querySelector(".copy").insertBefore(en, ar);
+        }
+      });
+    }
+
+    function setLanguage(next) {
+      lang = next === "ar" ? "ar" : "en";
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.getElementById("btn-en").setAttribute("aria-pressed", String(lang === "en"));
+      document.getElementById("btn-ar").setAttribute("aria-pressed", String(lang === "ar"));
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      applyI18n();
+      renderMeta();
+      fillDates();
+    }
+
+    function localized(enKey, arKey) {
+      if (lang === "ar") {
+        const ar = String(CONFIG[arKey] || "").trim();
+        if (ar) return ar;
+      }
+      return String(CONFIG[enKey] || "").trim();
+    }
+
+    function eventNameText() {
+      return localized("eventName", "eventNameAr");
+    }
+
+    function parseLineup(raw) {
+      if (Array.isArray(raw)) {
+        return raw.map((item) => {
+          if (typeof item === "string") return item.trim();
+          if (item && typeof item === "object") {
+            const val = lang === "ar" ? (item.ar || item.en) : (item.en || item.ar);
+            return String(val || "").trim();
+          }
+          return "";
+        }).filter(Boolean);
+      }
+      const s = String(raw || "").trim();
+      if (!s) return [];
+      return s.split(/\s*[,،]\s*/).map((part, i, arr) => {
+        let p = part.trim();
+        if (i === arr.length - 1) p = p.replace(/^(and\s+|و)/i, "").trim();
+        else p = p.replace(/^and\s+/i, "").trim();
+        return p;
+      }).filter(Boolean);
+    }
+
+    function splitAct(label) {
+      const m = label.match(/^(.*?)\s+((?:on live drums|على الدرامز لايف).*)$/i);
+      if (m) return { name: m[1].trim(), note: m[2].trim() };
+      return { name: label, note: "" };
+    }
+
+    function renderEventChrome() {
+      const name = eventNameText();
+      const h1 = document.getElementById("event-name");
+      if (h1) {
+        h1.textContent = name || t("title");
+        const latin = /^[\sA-Za-z0-9&.,'’:+-]+$/.test(h1.textContent);
+        h1.setAttribute("dir", latin ? "ltr" : (lang === "ar" ? "rtl" : "ltr"));
+        h1.lang = latin ? "en" : lang;
+      }
+      const kicker = document.querySelector(".hero-kicker");
+      if (kicker) kicker.hidden = !name;
+      const titleBits = [];
+      if (name) titleBits.push(name);
+      titleBits.push("OmanEvents Guest List");
+      document.title = titleBits.join(" — ");
+      renderLineup();
+    }
+
+    function renderLineup() {
+      const root = document.getElementById("lineup");
+      if (!root) return;
+      root.innerHTML = "";
+      const raw = lang === "ar" && String(CONFIG.lineupAr || "").trim() ? CONFIG.lineupAr : CONFIG.lineup;
+      const items = parseLineup(raw);
+      if (!items.length) {
+        root.hidden = true;
+        return;
+      }
+      root.hidden = false;
+      root.setAttribute("aria-label", lang === "ar" ? "اللاين أب" : "Lineup");
+      items.forEach((label) => {
+        const li = document.createElement("li");
+        const parts = splitAct(label);
+        if (parts.note) {
+          const act = document.createElement("span");
+          act.className = "act";
+          act.textContent = parts.name;
+          const note = document.createElement("span");
+          note.className = "act-note";
+          note.textContent = " " + parts.note;
+          li.appendChild(act);
+          li.appendChild(note);
+        } else {
+          li.textContent = label;
+        }
+        root.appendChild(li);
+      });
+    }
+
+    function metaItem(label, value, soon, span) {
+      const div = document.createElement("div");
+      div.className = "meta-item" + (span ? " span-all" : "");
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      if (soon) { dd.className = "soon"; }
+      dd.textContent = value;
+      div.appendChild(dt);
+      div.appendChild(dd);
+      return div;
+    }
+
+    function renderMeta() {
+      renderEventChrome();
+      const root = document.getElementById("event-meta");
+      root.innerHTML = "";
+      const date = CONFIG.eventDate || (CONFIG.eventDates && CONFIG.eventDates[0]) || "";
+      root.appendChild(metaItem(t("metaDate"), formatDate(date), false, true));
+      const venue = localized("venue", "venueAr");
+      const time = localized("time", "timeAr");
+      const price = String(CONFIG.price || "").trim();
+      root.appendChild(metaItem(t("metaVenue"), venue || t("soon"), !venue));
+      root.appendChild(metaItem(t("metaTime"), time || t("soon"), !time));
+      // Price is unknown: hide the row entirely. Never use the "soon" fallback for price.
+      if (price) root.appendChild(metaItem(t("metaPrice"), price, false));
+    }
+
+    function fillDates() {
+      const sel = document.getElementById("eventDate");
+      if (!sel) return;
+      const current = sel.value || CONFIG.eventDate;
+      sel.innerHTML = "";
+      const dates = (CONFIG.eventDates && CONFIG.eventDates.length) ? CONFIG.eventDates : [CONFIG.eventDate];
+      dates.forEach((d) => {
+        const opt = document.createElement("option");
+        opt.value = d;
+        opt.textContent = formatDate(d);
+        if (d === current) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      if (!sel.value && CONFIG.eventDate) sel.value = CONFIG.eventDate;
+    }
+
+    function normalizeRef(raw) {
+      const original = raw == null ? "" : String(raw);
+      const normalized = original.trim().toUpperCase();
+      if (normalized && REF_RE.test(normalized)) return { raw: original, normalized: normalized, valid: true };
+      return { raw: original, normalized: "", valid: false };
+    }
+
+    function readStore() {
+      try {
+        const rec = JSON.parse(localStorage.getItem(ATTR_KEY) || "null");
+        if (rec && rec.ts && Date.now() - Number(rec.ts) < ATTR_TTL) return rec;
+      } catch (e) {}
+      return null;
+    }
+
+    function writeStore(rec) {
+      try { localStorage.setItem(ATTR_KEY, JSON.stringify(rec)); } catch (e) {}
+    }
+
+    function captureAttribution() {
+      const params = new URLSearchParams(window.location.search);
+      const stored = readStore() || { rawRef: "", utms: { utm_source: "", utm_medium: "", utm_campaign: "" }, source: "", ts: Date.now() };
+      const hasRef = params.has("ref");
+      const rawRef = hasRef ? params.get("ref") : stored.rawRef || "";
+      const utmsFromUrl = {
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || ""
+      };
+      const hasUtm = !!(utmsFromUrl.utm_source || utmsFromUrl.utm_medium || utmsFromUrl.utm_campaign);
+      const srcParam = params.get("src") || params.get("source");
+      let source = stored.source || "";
+      if (srcParam) {
+        const up = String(srcParam).trim().toUpperCase();
+        source = SOURCE_RE.test(up) ? up : "";
+      }
+      let utms = stored.utms || utmsFromUrl;
+      if (hasRef && !hasUtm) utms = { utm_source: "", utm_medium: "", utm_campaign: "" };
+      if (hasUtm) utms = utmsFromUrl;
+      const rec = { rawRef: hasRef ? (params.get("ref") || "") : rawRef, utms: utms, source: source, ts: Date.now() };
+      if (hasRef || hasUtm || srcParam) writeStore(rec);
+      else if (stored.rawRef || stored.source || (stored.utms && (stored.utms.utm_source || stored.utms.utm_medium || stored.utms.utm_campaign))) {
+        /* keep existing store; refresh not required */
+      }
+      return rec;
+    }
+
+    function normalizePhone(raw) {
+      let d = String(raw || "").replace(/[^\d+]/g, "");
+      if (d.indexOf("00") === 0) d = "+" + d.slice(2);
+      if (/^968\d{8}$/.test(d)) d = "+" + d;
+      if (/^\d{8}$/.test(d)) d = "+968" + d;
+      if (/^\+968\d{8}$/.test(d)) return d;
+      return "";
+    }
+
+    function normalizeInstagram(raw) {
+      const s = String(raw || "").trim().replace(/^@+/, "");
+      if (!s) return "";
+      if (!/^[A-Za-z0-9._]{1,30}$/.test(s)) return false;
+      return "@" + s;
+    }
+
+    function clearErrors() {
+      document.getElementById("form-error").classList.remove("is-on");
+      document.getElementById("form-error").textContent = "";
+      document.querySelectorAll(".field.has-error").forEach((el) => el.classList.remove("has-error"));
+    }
+
+    function showFieldError(name) {
+      const field = document.querySelector('[data-field="' + name + '"]');
+      if (field) field.classList.add("has-error");
+    }
+
+    function showFormError(msg) {
+      const box = document.getElementById("form-error");
+      box.textContent = msg;
+      box.classList.add("is-on");
+    }
+
+    function validate() {
+      clearErrors();
+      const errors = [];
+      const eventDate = document.getElementById("eventDate").value;
+      if (!eventDate) { showFieldError("eventDate"); errors.push("eventDate"); }
+      const name = document.getElementById("name").value.trim();
+      if (name.length < 2 || name.length > 80) { showFieldError("name"); errors.push("name"); }
+      const phone = normalizePhone(document.getElementById("phone").value);
+      if (!phone) { showFieldError("phone"); errors.push("phone"); }
+      const howHeard = document.getElementById("howHeard").value;
+      if (!howHeard) { showFieldError("howHeard"); errors.push("howHeard"); }
+      const eventInterest = document.getElementById("eventInterest").value;
+      if (!eventInterest) { showFieldError("eventInterest"); errors.push("eventInterest"); }
+      const entryTier = document.getElementById("entryTier").value;
+      if (!entryTier) { showFieldError("entryTier"); errors.push("entryTier"); }
+      const party = parseInt(document.getElementById("partySize").value, 10);
+      if (!isFinite(party) || party < 1 || party > 20) { showFieldError("partySize"); errors.push("partySize"); }
+      const ig = normalizeInstagram(document.getElementById("instagram").value);
+      if (ig === false) { showFieldError("instagram"); errors.push("instagram"); }
+      if (!document.getElementById("ageConfirmed").checked) { showFieldError("ageConfirmed"); errors.push("ageConfirmed"); }
+      return { ok: errors.length === 0, errors, name, phone, eventDate, howHeard, eventInterest, entryTier, party, ig };
+    }
+
+    function buildPayload(v) {
+      const refInfo = normalizeRef(attr.rawRef);
+      return {
+        name: v.name,
+        phone: v.phone,
+        eventDate: v.eventDate,
+        howHeard: v.howHeard,
+        eventInterest: v.eventInterest,
+        entryTier: v.entryTier,
+        partySize: v.party,
+        instagram: v.ig || "",
+        ageConfirmed: true,
+        whatsappConsent: document.getElementById("whatsappConsent").checked,
+        language: lang === "ar" ? "AR" : "EN",
+        preferredLanguage: lang === "ar" ? "AR" : "EN",
+        consentVersion: CONFIG.consentVersion,
+        ref: refInfo.valid ? refInfo.normalized : "",
+        refRaw: attr.rawRef || "",
+        utm_source: (attr.utms && attr.utms.utm_source) || "",
+        utm_medium: (attr.utms && attr.utms.utm_medium) || "",
+        utm_campaign: (attr.utms && attr.utms.utm_campaign) || "",
+        optInSource: attr.source || "",
+        userAgent: navigator.userAgent || "",
+        pageUrl: window.location.href,
+        elapsedMs: Date.now() - startedAt,
+        website: document.querySelector('input[name="website"]').value
+      };
+    }
+
+    function showSuccess(payload, duplicate) {
+      document.getElementById("form-card").hidden = true;
+      const hero = document.querySelector(".hero");
+      if (hero) hero.hidden = true;
+      const card = document.getElementById("success-card");
+      card.hidden = false;
+      card.classList.add("is-on");
+      document.getElementById("success-title").textContent = duplicate ? t("already") : t("successTitle");
+      document.getElementById("success-name").textContent = payload.name;
+      const venue = localized("venue", "venueAr");
+      const evName = eventNameText() || "OmanEvents";
+      const venueBit = venue ? t("atVenue").replace("{VENUE}", venue) : "";
+      let body = t("successBody")
+        .replace("{EVENT}", evName)
+        .replace("{DATE}", formatDate(payload.eventDate))
+        .replace("{VENUE}", venueBit);
+      if (!venue || !localized("time", "timeAr")) {
+        body += t("successSoon");
+      }
+      document.getElementById("success-body").textContent = body;
+      document.getElementById("success-wa").textContent = payload.whatsappConsent ? t("successWaYes") : t("successWaNo");
+      document.getElementById("success-desk").textContent = withDesk(t("desk"));
+      const heading = document.getElementById("success-title");
+      heading.focus();
+    }
+
+    async function onSubmit(ev) {
+      ev.preventDefault();
+      const v = validate();
+      if (!v.ok) {
+        showFormError(t("errGeneric"));
+        const first = document.querySelector(".field.has-error");
+        if (first) {
+          const input = first.querySelector("input, select");
+          if (input) input.focus();
+        }
+        return;
+      }
+      const endpoint = String(CONFIG.endpointUrl || "").trim();
+      if (!endpoint) {
+        showFormError(withDesk(t("errEndpoint")));
+        return;
+      }
+      const payload = buildPayload(v);
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.textContent = t("submitting");
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          credentials: "omit",
+          redirect: "follow",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        let data = {};
+        try { data = await res.json(); } catch (e) { data = {}; }
+        if (!res.ok || data.ok === false) {
+          showFormError(data.message ? data.message : withDesk(t("errNetwork")));
+          return;
+        }
+        showSuccess(payload, !!data.duplicate);
+      } catch (err) {
+        showFormError(withDesk(t("errNetwork")));
+      } finally {
+        btn.disabled = false;
+        btn.textContent = t("submit");
+      }
+    }
+
+    function detectLang() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("lang") === "ar" || params.get("lang") === "en") return params.get("lang");
+      try {
+        const saved = localStorage.getItem(LANG_KEY);
+        if (saved === "ar" || saved === "en") return saved;
+      } catch (e) {}
+      const nav = (navigator.language || "").toLowerCase();
+      if (nav.indexOf("ar") === 0) return "ar";
+      return "en";
+    }
+
+    async function loadConfig() {
+      try {
+        const res = await fetch("config.json", { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          Object.keys(CONFIG).forEach((k) => {
+            if (data[k] !== undefined && data[k] !== null) CONFIG[k] = data[k];
+          });
+        }
+      } catch (e) {}
+    }
+
+    async function init() {
+      await loadConfig();
+      attr = captureAttribution();
+      setLanguage(detectLang());
+      fillDates();
+      document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
+      document.getElementById("btn-ar").addEventListener("click", () => setLanguage("ar"));
+      document.getElementById("guest-form").addEventListener("submit", onSubmit);
+      window.__OE_GUESTLIST__ = {
+        getConfig: () => CONFIG,
+        getAttr: () => attr,
+        normalizeRef: normalizeRef,
+        buildPayloadForTest: function () {
+          const v = validate();
+          return v.ok ? buildPayload(v) : { invalid: true, errors: v.errors };
+        }
+      };
+    }
+
+    init();
+  })();
+  </script>
+</body>
+</html>
