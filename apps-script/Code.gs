@@ -216,18 +216,18 @@ function handlePost_(e) {
 
   var values = {};
   values['Timestamp (GST)'] = now;
-  values['Event date'] = eventDate;
-  values['Full name'] = name;
-  values['WhatsApp number (+968 format)'] = phone;
+  values['Event date'] = safeCell_(eventDate);
+  values['Full name'] = safeCell_(name);
+  values['WhatsApp number (+968 format)'] = safeCell_(phone);
   values['Consent to WhatsApp messages (Yes/No)'] = waYes ? 'Yes' : 'No';
   values['Consent wording version'] = consentWording;
-  values['Opt-in source (source code e.g. ADMIN-01)'] = source;
-  values['How did you hear'] = hear;
-  values['Event interest'] = interest;
-  values['Entry tier (Guest list / Table / Walk-in)'] = tier;
+  values['Opt-in source (source code e.g. ADMIN-01)'] = safeCell_(source);
+  values['How did you hear'] = safeCell_(hear);
+  values['Event interest'] = safeCell_(interest);
+  values['Entry tier (Guest list / Table / Walk-in)'] = safeCell_(tier);
   values['Party size (1-20)'] = party;
   values['Preferred language (EN/AR)'] = lang;
-  values['Instagram handle (optional)'] = ig || '';
+  values['Instagram handle (optional)'] = safeCell_(ig || '');
   values['Age confirmed 21+ (Yes/No)'] = 'Yes';
   // Live workflow (form-spec + referrals handoff): row lands as Pending.
   // Door staff later set this to Arrived (the only status that counts as a referral).
@@ -236,14 +236,14 @@ function handlePost_(e) {
   values['Last contacted'] = '';
   values['Opted out (Yes/No)'] = 'No';
   values['Notes'] = '';
-  values['Referred By'] = refInfo.valid ? refInfo.normalized : '';
-  values['Ref raw'] = refRaw;
-  values['utm_source'] = utmSource;
-  values['utm_medium'] = utmMedium;
-  values['utm_campaign'] = utmCampaign;
-  values['Consent text version'] = consentTextVersion;
-  values['User agent'] = userAgent;
-  values['Page URL'] = pageUrl;
+  values['Referred By'] = safeCell_(refInfo.valid ? refInfo.normalized : '');
+  values['Ref raw'] = safeCell_(refRaw);
+  values['utm_source'] = safeCell_(utmSource);
+  values['utm_medium'] = safeCell_(utmMedium);
+  values['utm_campaign'] = safeCell_(utmCampaign);
+  values['Consent text version'] = safeCell_(consentTextVersion);
+  values['User agent'] = safeCell_(userAgent);
+  values['Page URL'] = safeCell_(pageUrl);
 
   var lastCol = Math.max(sheet.getLastColumn(), 1);
   var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
@@ -377,6 +377,17 @@ function isYes_(value) {
 
 function string_(value) {
   return value == null ? '' : String(value).trim();
+}
+
+/**
+ * Neutralise spreadsheet formula injection. A user-supplied string that starts
+ * with = + - @ (or a tab / carriage return) is prefixed with a single quote so
+ * Sheets stores it as plain text instead of evaluating it. Applied to every
+ * user-supplied value before it is written to the sheet.
+ */
+function safeCell_(value) {
+  if (typeof value !== 'string') return value;
+  return /^[=+\-@\t\r]/.test(value) ? "'" + value : value;
 }
 
 function json_(obj) {

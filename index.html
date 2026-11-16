@@ -128,7 +128,8 @@
       padding: 0.4rem 0.7rem;
       border-radius: 999px;
       cursor: pointer;
-      min-height: 36px;
+      min-height: 44px;
+      min-width: 44px;
       transition: background 0.2s ease, color 0.2s ease;
     }
     .lang-toggle button[aria-pressed="true"] {
@@ -303,7 +304,7 @@
     html[dir="rtl"] select { background-position: left 0.95rem center; }
     input::placeholder { color: #6d6d75; }
     input:hover, select:hover { border-color: rgba(201, 162, 39, 0.45); }
-    input:focus, select:focus, button:focus-visible, .lang-toggle button:focus-visible, .check input:focus-visible {
+    input:focus, select:focus, button:focus-visible, .lang-toggle button:focus-visible {
       outline: none;
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.28);
@@ -338,16 +339,52 @@
       background: #09090a;
       margin-bottom: 0.7rem;
     }
+    /* The input is a 44x44 tap target; the visible box (1.2rem) is its ::before. */
     .check input {
-      width: 1.2rem;
-      height: 1.2rem;
-      min-height: 0;
-      margin-top: 0.15rem;
+      display: grid;
+      place-content: center;
+      width: 44px;
+      height: 44px;
+      min-height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      margin-block: -0.7rem;
+      margin-inline: -0.65rem -0.9rem;
       flex: none;
-      accent-color: var(--gold);
       cursor: pointer;
     }
-    .check .copy { color: var(--text); font-size: 0.9rem; line-height: 1.45; text-transform: none; letter-spacing: 0; }
+    .check input::before {
+      content: "";
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 1px solid var(--silver);
+      border-radius: 6px;
+      background: #09090a center / 0.85rem no-repeat;
+      transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .check input:hover::before { border-color: var(--gold); }
+    .check input:checked::before {
+      border-color: var(--gold);
+      background-color: var(--gold);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.4l2.3 2.3 4.7-5'/%3E%3C/svg%3E");
+    }
+    .check input:focus-visible::before {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.28);
+    }
+    .check .copy {
+      flex: 1;
+      min-width: 0;
+      min-height: 44px;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      text-transform: none;
+      letter-spacing: 0;
+    }
     .check .copy .alt {
       display: block;
       margin-top: 0.3rem;
@@ -392,6 +429,7 @@
       color: var(--chrome);
       font-size: 0.8rem;
     }
+    .fine.privacy { margin-top: 0.6rem; font-size: 0.75rem; line-height: 1.45; }
     .fine a { color: var(--gold-soft); text-decoration: none; }
     .fine a:hover { text-decoration: underline; }
 
@@ -667,6 +705,7 @@
         <button class="submit" type="submit" id="submit-btn" data-i18n="submit">Join the guest list</button>
         <p class="fine" id="desk-line"></p>
       </form>
+      <p class="fine privacy" data-i18n="privacy">We use your name, phone and Instagram only to manage the Oman Events guest list and send event updates you opted into.</p>
     </div>
 
     <div class="card reserve" id="success-card" hidden>
@@ -750,8 +789,13 @@
         partySize: "Party size",
         partyHint: "How many people, including you?",
         instagram: "Instagram handle (optional)",
+        namePh: "Name on the door list",
+        phonePh: "97773122",
+        partyPh: "1",
+        igPh: "@yourname",
         igHint: "Optional. Example: @yourname",
         submit: "Join the guest list",
+        privacy: "We use your name, phone and Instagram only to manage the Oman Events guest list and send event updates you opted into.",
         submitting: "Reserving…",
         footer: "OmanEvents · Thursday nights in Muscat · 21+",
         metaDate: "Date",
@@ -789,8 +833,8 @@
       },
       ar: {
         eyebrow: "ليالي الخميس · مسقط",
-        title: "القست ليست",
-        lede: "عمان إيفنتس — أفرو، هيب هوب، آر أند بي. سجّل في القست ليست. +21 مع إثبات عمر.",
+        title: "قائمة الضيوف",
+        lede: "عمان إيفنتس — أفرو، هيب هوب، آر أند بي. سجّل في قائمة الضيوف. +21 مع إثبات عمر.",
         formTitle: "احجز مكانك",
         formLead: "عبّر عن نفسك فقط. كل صديق يبي يكون على القائمة لازم يسجّل لوحده.",
         eventDate: "تاريخ الفعالية",
@@ -812,15 +856,20 @@
         intThis: "هذا الخميس فقط",
         intSure: "لست متأكداً بعد",
         entryTier: "نوع الدخول",
-        tierGuest: "قست ليست",
+        tierGuest: "قائمة الضيوف",
         tierTable: "طاولة",
         tierWalk: "دخول مباشر",
         tierHint: "طلبات الطاولات تتأكد على واتساب فقط إذا وافقت على الرسائل؛ وإلا نسجّلها للباب.",
         partySize: "عدد الأشخاص",
         partyHint: "كم شخص، بما فيك أنت؟",
         instagram: "حساب إنستغرام (اختياري)",
+        namePh: "الاسم على قائمة الباب",
+        phonePh: "٩٧٧٧٣١٢٢",
+        partyPh: "١",
+        igPh: "@اسم_حسابك",
         igHint: "اختياري. مثال: @yourname",
-        submit: "سجّل في القست ليست",
+        submit: "سجّل في قائمة الضيوف",
+        privacy: "نستخدم اسمك ورقم هاتفك وحساب إنستغرام فقط لإدارة قائمة ضيوف Oman Events وإرسال تحديثات الفعاليات التي وافقت عليها.",
         submitting: "جارٍ الحجز…",
         footer: "عمان إيفنتس · ليالي الخميس في مسقط · +21",
         metaDate: "التاريخ",
@@ -840,9 +889,9 @@
         errEndpoint: "التسجيل غير متاح على هذه الصفحة حالياً. حاول لاحقاً أو راسلنا على واتساب {DESK}.",
         errNetwork: "حدث خطأ. حاول مرة أخرى، أو راسلنا على واتساب {DESK}.",
         errGeneric: "الرجاء مراجعة النموذج والمحاولة مرة أخرى.",
-        already: "أنت أصلاً على القست ليست لهذه الليلة.",
+        already: "أنت أصلاً على قائمة الضيوف لهذه الليلة.",
         successTitle: "أنت على القائمة",
-        successBody: "أنت على قست ليست {EVENT} ليلة {DATE}{VENUE}. أحضر إثبات عمر (+21).",
+        successBody: "أنت على قائمة الضيوف لفعالية {EVENT} ليلة {DATE}{VENUE}. أحضر إثبات عمر (+21).",
         successSoon: " التفاصيل قريباً.",
         successWaYes: "نرسل لك تذكير على نفس رقم الواتساب.",
         successWaNo: "لن نراسلك على واتساب.",
@@ -895,9 +944,9 @@
         if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") return;
         el.textContent = t(key);
       });
-      const name = document.getElementById("name");
-      name.placeholder = lang === "ar" ? "الاسم على قائمة الباب" : "Name on the door list";
-      document.getElementById("instagram").placeholder = "@yourname";
+      [["name", "namePh"], ["phone", "phonePh"], ["partySize", "partyPh"], ["instagram", "igPh"]].forEach((pair) => {
+        document.getElementById(pair[0]).placeholder = t(pair[1]);
+      });
       document.getElementById("desk-line").textContent = withDesk(t("desk"));
       // Stacked consent: current language first, the other as .alt
       document.querySelectorAll(".check").forEach((box) => {
