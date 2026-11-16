@@ -787,6 +787,10 @@
         partySize: "Party size",
         partyHint: "How many people, including you?",
         instagram: "Instagram handle (optional)",
+        namePh: "Name on the door list",
+        phonePh: "97773122",
+        partyPh: "1",
+        igPh: "@yourname",
         igHint: "Optional. Example: @yourname",
         submit: "Join the guest list",
         submitting: "Reserving…",
@@ -856,6 +860,10 @@
         partySize: "عدد الأشخاص",
         partyHint: "كم شخص، بما فيك أنت؟",
         instagram: "حساب إنستغرام (اختياري)",
+        namePh: "الاسم على قائمة الباب",
+        phonePh: "٩٧٧٧٣١٢٢",
+        partyPh: "١",
+        igPh: "@اسم_حسابك",
         igHint: "اختياري. مثال: @yourname",
         submit: "سجّل في قائمة الضيوف",
         submitting: "جارٍ الحجز…",
@@ -932,9 +940,9 @@
         if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") return;
         el.textContent = t(key);
       });
-      const name = document.getElementById("name");
-      name.placeholder = lang === "ar" ? "الاسم على قائمة الباب" : "Name on the door list";
-      document.getElementById("instagram").placeholder = "@yourname";
+      [["name", "namePh"], ["phone", "phonePh"], ["partySize", "partyPh"], ["instagram", "igPh"]].forEach((pair) => {
+        document.getElementById(pair[0]).placeholder = t(pair[1]);
+      });
       document.getElementById("desk-line").textContent = withDesk(t("desk"));
       // Stacked consent: current language first, the other as .alt
       document.querySelectorAll(".check").forEach((box) => {
