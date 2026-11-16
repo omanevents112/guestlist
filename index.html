@@ -395,6 +395,32 @@
     .fine a { color: var(--gold-soft); text-decoration: none; }
     .fine a:hover { text-decoration: underline; }
 
+    .actions { max-width: 28rem; margin: 1rem auto 0; display: flex; flex-direction: column; align-items: stretch; gap: 0.5rem; }
+    .actions-lead { color: var(--silver); font-size: 0.88rem; text-align: center; margin: 0; }
+    .actions-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .act-btn {
+      flex: 1 1 10rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel-2);
+      color: var(--text);
+      font: 500 0.92rem/1.3 var(--font-sans);
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .act-btn:hover { border-color: var(--silver); }
+    .act-btn:active { transform: scale(0.98); }
+    .act-btn:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+    .act-btn.share { border-color: var(--gold); color: var(--gold-soft); }
+    .reserve .actions { margin-top: 1.1rem; margin-bottom: 0.4rem; }
+
     .reserve { text-align: center; padding: 1.6rem 0.6rem 0.6rem; }
     .seal {
       width: 88px;
@@ -518,6 +544,14 @@
       <p class="lede" data-i18n="lede">Afro, hip-hop, R&amp;B and international. 21+ with valid ID. Get your name on the door list.</p>
       <ul class="lineup" id="lineup" aria-label="Lineup"></ul>
       <dl class="meta" id="event-meta"></dl>
+      <div class="actions" data-actions="hero">
+        <p class="actions-lead" data-i18n="calLead">Add to calendar</p>
+        <div class="actions-row">
+          <a class="act-btn" data-cal="google" href="#" target="_blank" rel="noopener" data-i18n="calGoogle">Google Calendar</a>
+          <a class="act-btn" data-cal="ics" href="#" download="thursday-takeover.ics" data-i18n="calIcs">Apple / Outlook (.ics)</a>
+        </div>
+        <a class="act-btn share" data-share href="#" target="_blank" rel="noopener" data-i18n="shareWa">Share on WhatsApp</a>
+      </div>
     </section>
 
     <div class="card" id="form-card">
@@ -642,6 +676,14 @@
       <div class="gold-rule"></div>
       <p class="reserve-body" id="success-body"></p>
       <p class="reserve-body" id="success-wa"></p>
+      <div class="actions" data-actions="success">
+        <p class="actions-lead" data-i18n="calLead">Add to calendar</p>
+        <div class="actions-row">
+          <a class="act-btn" data-cal="google" href="#" target="_blank" rel="noopener" data-i18n="calGoogle">Google Calendar</a>
+          <a class="act-btn" data-cal="ics" href="#" download="thursday-takeover.ics" data-i18n="calIcs">Apple / Outlook (.ics)</a>
+        </div>
+        <a class="act-btn share" data-share href="#" target="_blank" rel="noopener" data-i18n="shareWa">Share on WhatsApp</a>
+      </div>
       <p class="fine" id="success-desk"></p>
     </div>
 
@@ -735,6 +777,13 @@
         successWaYes: "We'll message this WhatsApp number with a reminder.",
         successWaNo: "We won't message you on WhatsApp.",
         desk: "Tables or questions: WhatsApp {DESK}",
+        calLead: "Add to calendar",
+        calGoogle: "Google Calendar",
+        calIcs: "Apple / Outlook (.ics)",
+        shareWa: "Share on WhatsApp",
+        shareMsg: "Join me at {EVENT}, {VENUE}, {DATE}. Get on the guest list:",
+        calLineup: "Lineup",
+        calUrl: "Guest list",
         atVenue: " at {VENUE}"
       },
       ar: {
@@ -797,6 +846,13 @@
         successWaYes: "نرسل لك تذكير على نفس رقم الواتساب.",
         successWaNo: "لن نراسلك على واتساب.",
         desk: "للطاولات أو أي سؤال: واتساب {DESK}",
+        calLead: "أضف إلى التقويم",
+        calGoogle: "تقويم Google",
+        calIcs: "Apple وOutlook (ملف ICS)",
+        shareWa: "شارك على واتساب",
+        shareMsg: "تعال معي إلى {EVENT}، {VENUE}، {DATE}. سجّل اسمك على القائمة:",
+        calLineup: "اللاين أب",
+        calUrl: "قائمة الضيوف",
         atVenue: " في {VENUE}"
       }
     };
@@ -869,6 +925,7 @@
       applyI18n();
       renderMeta();
       fillDates();
+      updateActions();
     }
 
     function localized(enKey, arKey) {
@@ -1001,6 +1058,136 @@
         sel.appendChild(opt);
       });
       if (!sel.value && CONFIG.eventDate) sel.value = CONFIG.eventDate;
+    }
+
+    const PAGE_URL = "https://omanevents112.github.io/guestlist/";
+    // Muscat is UTC+4: 23:00 local = 19:00Z, 03:00 next day local = 23:00Z same date.
+    const EVENT_START_UTC = "T190000Z";
+    const EVENT_END_UTC = "T230000Z";
+
+    function selectedEventDate() {
+      const sel = document.getElementById("eventDate");
+      const v = sel && sel.value ? sel.value : "";
+      if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+      return CONFIG.eventDate || "";
+    }
+
+    function sharePageUrl() {
+      const info = normalizeRef(attr && attr.rawRef);
+      return info.valid ? PAGE_URL + "?ref=" + encodeURIComponent(info.normalized) : PAGE_URL;
+    }
+
+    function calendarData() {
+      const date = selectedEventDate();
+      const ymd = date.replace(/-/g, "");
+      const venue = String(CONFIG.venue || "").trim();
+      const lineup = parseLineup(lang === "ar" && String(CONFIG.lineupAr || "").trim() ? CONFIG.lineupAr : CONFIG.lineup).join(", ");
+      const details = [];
+      if (lineup) details.push(t("calLineup") + ": " + lineup);
+      details.push(t("calUrl") + ": " + PAGE_URL);
+      return {
+        ymd: ymd,
+        date: date,
+        start: ymd + EVENT_START_UTC,
+        end: ymd + EVENT_END_UTC,
+        title: (String(CONFIG.eventName || "").trim() || "THURSDAY TAKEOVER") + " \u2014 OmanEvents",
+        location: (venue ? venue + ", " : "") + "Muscat",
+        details: details.join("\n")
+      };
+    }
+
+    function googleCalendarUrl(c) {
+      return "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent(c.title) +
+        "&dates=" + c.start + "/" + c.end +
+        "&details=" + encodeURIComponent(c.details) +
+        "&location=" + encodeURIComponent(c.location);
+    }
+
+    function icsEscape(v) {
+      return String(v).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+    }
+
+    function icsFold(line) {
+      // Fold at 70 octets, never splitting a character.
+      const enc = new TextEncoder();
+      const out = [];
+      let cur = "";
+      let bytes = 0;
+      Array.from(line).forEach((ch) => {
+        const n = enc.encode(ch).length;
+        if (bytes + n > 70) { out.push(cur); cur = " " + ch; bytes = 1 + n; }
+        else { cur += ch; bytes += n; }
+      });
+      out.push(cur);
+      return out.join("\r\n");
+    }
+
+    function buildIcs(c) {
+      const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+      const lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//OmanEvents//Guest List//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        "UID:thursday-takeover-" + c.ymd + "@omanevents112.github.io",
+        "DTSTAMP:" + stamp,
+        "DTSTART:" + c.start,
+        "DTEND:" + c.end,
+        "SUMMARY:" + icsEscape(c.title),
+        "LOCATION:" + icsEscape(c.location),
+        "DESCRIPTION:" + icsEscape(c.details),
+        "URL:" + PAGE_URL,
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ];
+      return lines.map(icsFold).join("\r\n") + "\r\n";
+    }
+
+    function shareUrl() {
+      const venue = localized("venue", "venueAr");
+      const msg = t("shareMsg")
+        .replace("{EVENT}", eventNameText() || "OmanEvents")
+        .replace("{VENUE}", venue || "Muscat")
+        .replace("{DATE}", formatDate(selectedEventDate()));
+      return "https://wa.me/?text=" + encodeURIComponent(msg + " " + sharePageUrl());
+    }
+
+    function updateActions() {
+      const c = calendarData();
+      const g = googleCalendarUrl(c);
+      const ics = buildIcs(c);
+      const dataUrl = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+      const file = "thursday-takeover-" + c.date + ".ics";
+      const share = shareUrl();
+      document.querySelectorAll("[data-cal='google']").forEach((a) => { a.href = g; });
+      document.querySelectorAll("[data-cal='ics']").forEach((a) => {
+        a.href = dataUrl;
+        a.setAttribute("download", file);
+        a._ics = ics;
+        a._file = file;
+      });
+      document.querySelectorAll("[data-share]").forEach((a) => { a.href = share; });
+    }
+
+    function onIcsClick(ev) {
+      const a = ev.currentTarget;
+      if (!a._ics || !window.Blob || !window.URL || !URL.createObjectURL) return; // data URL fallback
+      try {
+        ev.preventDefault();
+        const url = URL.createObjectURL(new Blob([a._ics], { type: "text/calendar;charset=utf-8" }));
+        const tmp = document.createElement("a");
+        tmp.href = url;
+        tmp.download = a._file;
+        document.body.appendChild(tmp);
+        tmp.click();
+        document.body.removeChild(tmp);
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+      } catch (e) {
+        window.location.href = a.href;
+      }
     }
 
     function normalizeRef(raw) {
@@ -1238,6 +1425,9 @@
       document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
       document.getElementById("btn-ar").addEventListener("click", () => setLanguage("ar"));
       document.getElementById("guest-form").addEventListener("submit", onSubmit);
+      document.getElementById("eventDate").addEventListener("change", updateActions);
+      document.querySelectorAll("[data-cal='ics']").forEach((a) => a.addEventListener("click", onIcsClick));
+      updateActions();
       window.__OE_GUESTLIST__ = {
         getConfig: () => CONFIG,
         getAttr: () => attr,
