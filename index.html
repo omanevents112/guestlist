@@ -691,15 +691,15 @@
           <span class="field-error" data-i18n="errIg">Please enter a valid Instagram handle.</span>
         </div>
 
-        <div class="field" data-field="ageConfirmed">
+        <div class="field" data-field="rulesAccepted">
           <div class="check req">
-            <input id="ageConfirmed" name="ageConfirmed" type="checkbox" required>
-            <label for="ageConfirmed" class="copy">
-              <span data-consent="en">I confirm I am 21 or older and will bring valid ID.</span>
-              <span class="alt" data-consent="ar">أؤكد أن عمري 21 سنة أو أكثر، وبأحضر إثبات عمر رسمي.</span>
+            <input id="rulesAccepted" name="rulesAccepted" type="checkbox" required>
+            <label for="rulesAccepted" class="copy">
+              <span data-consent="en">I'll bring valid ID and accept the venue's entry rules</span>
+              <span class="alt" data-consent="ar">سأحضر إثبات هوية ساري وأوافق على شروط الدخول للمكان</span>
             </label>
           </div>
-          <span class="field-error" data-i18n="errAge">You must confirm you are 21 or older.</span>
+          <span class="field-error" data-i18n="errRules">Please accept to continue: valid ID and the venue's entry rules.</span>
         </div>
 
         <button class="submit" type="submit" id="submit-btn" data-i18n="submit">Join the guest list</button>
@@ -812,7 +812,7 @@
         errTier: "Please choose an entry tier.",
         errParty: "Party size must be between 1 and 20.",
         errIg: "Please enter a valid Instagram handle.",
-        errAge: "You must confirm you are 21 or older.",
+        errRules: "Please accept to continue: valid ID and the venue's entry rules.",
         errEndpoint: "Signups are not open on this page yet. Please try again later or WhatsApp {DESK}.",
         errNetwork: "Something went wrong. Please try again, or WhatsApp {DESK}.",
         errGeneric: "Please check the form and try again.",
@@ -896,7 +896,7 @@
         errTier: "الرجاء اختيار نوع الدخول.",
         errParty: "عدد الأشخاص يجب أن يكون بين 1 و 20.",
         errIg: "الرجاء إدخال حساب إنستغرام صحيح.",
-        errAge: "يجب أن تؤكد أن عمرك 21 سنة أو أكثر.",
+        errRules: "يرجى الموافقة للمتابعة: إثبات هوية ساري وشروط الدخول للمكان.",
         errEndpoint: "التسجيل غير متاح على هذه الصفحة حالياً. حاول لاحقاً أو راسلنا على واتساب {DESK}.",
         errNetwork: "حدث خطأ. حاول مرة أخرى، أو راسلنا على واتساب {DESK}.",
         errGeneric: "الرجاء مراجعة النموذج والمحاولة مرة أخرى.",
@@ -1359,7 +1359,7 @@
       if (!isFinite(party) || party < 1 || party > 20) { showFieldError("partySize"); errors.push("partySize"); }
       const ig = normalizeInstagram(document.getElementById("instagram").value);
       if (ig === false) { showFieldError("instagram"); errors.push("instagram"); }
-      if (!document.getElementById("ageConfirmed").checked) { showFieldError("ageConfirmed"); errors.push("ageConfirmed"); }
+      if (!document.getElementById("rulesAccepted").checked) { showFieldError("rulesAccepted"); errors.push("rulesAccepted"); }
       return { ok: errors.length === 0, errors, name, phone, eventDate, howHeard, eventInterest, entryTier, party, ig };
     }
 
@@ -1374,7 +1374,7 @@
         entryTier: v.entryTier,
         partySize: v.party,
         instagram: v.ig || "",
-        ageConfirmed: true,
+        rulesAccepted: true,
         whatsappConsent: document.getElementById("whatsappConsent").checked,
         language: lang === "ar" ? "AR" : "EN",
         preferredLanguage: lang === "ar" ? "AR" : "EN",

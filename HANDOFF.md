@@ -8,6 +8,7 @@ Move finished tasks to **Done** with the commit link.
 ## For Codex
 
 ## For WebMaster
+- [2026-11-17] WebMaster: Code.gs changed (age gate replaced by `rulesAccepted` / error `rules_required`, column 'Rules accepted (Yes/No)'). Mohammed must paste the latest raw Code.gs (https://raw.githubusercontent.com/omanevents112/guestlist/main/apps-script/Code.gs) into Apps Script and deploy a New version BEFORE setting endpointUrl — commit: pending
 - [2026-11-17] WebMaster: Deploy the Apps Script web app and set endpointUrl in config.json — commit: pending
 - [2026-11-17] WebMaster: Consider rate limiting / spam protection on the Apps Script endpoint — commit: pending
 

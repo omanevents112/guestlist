@@ -70,7 +70,7 @@ var HEADERS = [
   'Party size (1-20)',
   'Preferred language (EN/AR)',
   'Instagram handle (optional)',
-  'Age confirmed 21+ (Yes/No)',
+  'Rules accepted (Yes/No)',
   'Status (Pending/Confirmed/Arrived/No-show)',
   'Last contacted',
   'Opted out (Yes/No)',
@@ -175,12 +175,12 @@ function handlePost_(e) {
     return json_({ ok: false, error: 'invalid_instagram', message: 'Please enter a valid Instagram handle.' });
   }
 
-  var ageYes = isYes_(data.ageConfirmed);
-  if (!ageYes) {
+  var rulesYes = isYes_(data.rulesAccepted);
+  if (!rulesYes) {
     return json_({
       ok: false,
-      error: 'age_required',
-      message: 'You must confirm you are 21 or older.'
+      error: 'rules_required',
+      message: "Please accept to continue: valid ID and the venue's entry rules."
     });
   }
 
@@ -228,7 +228,7 @@ function handlePost_(e) {
   values['Party size (1-20)'] = party;
   values['Preferred language (EN/AR)'] = lang;
   values['Instagram handle (optional)'] = safeCell_(ig || '');
-  values['Age confirmed 21+ (Yes/No)'] = 'Yes';
+  values['Rules accepted (Yes/No)'] = 'Yes';
   // Live workflow (form-spec + referrals handoff): row lands as Pending.
   // Door staff later set this to Arrived (the only status that counts as a referral).
   values['Status (Pending/Confirmed/Arrived/No-show)'] = 'Pending';
