@@ -716,6 +716,9 @@
       <div class="gold-rule"></div>
       <p class="reserve-body" id="success-body"></p>
       <p class="reserve-body" id="success-wa"></p>
+      <div class="actions" id="wa-lock" style="display:none">
+        <a class="act-btn share" id="wa-open" href="#" target="_blank" rel="noopener" data-i18n="waOpen">Open WhatsApp</a>
+      </div>
       <div class="actions" data-actions="success">
         <p class="actions-lead" data-i18n="calLead">Add to calendar</p>
         <div class="actions-row">
@@ -821,6 +824,17 @@
         successSoon: " Details announced soon.",
         successWaYes: "We'll message this WhatsApp number with a reminder.",
         successWaNo: "We won't message you on WhatsApp.",
+        waOpen: "Open WhatsApp",
+        waTitle: "One last step",
+        waLock: "Send the WhatsApp message to lock your spot.",
+        waHello: "Hello OmanEvents, I'd like to join the guest list.",
+        waName: "Name",
+        waPhone: "Phone",
+        waParty: "Party size",
+        waEvent: "Event",
+        waTier: "Entry",
+        waSource: "Source code",
+        waDirect: "direct",
         desk: "Tables or questions: WhatsApp {DESK}",
         calLead: "Add to calendar",
         calGoogle: "Google Calendar",
@@ -895,6 +909,17 @@
         successSoon: " التفاصيل قريباً.",
         successWaYes: "نرسل لك تذكير على نفس رقم الواتساب.",
         successWaNo: "لن نراسلك على واتساب.",
+        waOpen: "افتح واتساب",
+        waTitle: "خطوة أخيرة",
+        waLock: "أرسل رسالة الواتساب لتأكيد مكانك.",
+        waHello: "مرحباً عمان إيفنتس، أبي أسجّل في قائمة الضيوف.",
+        waName: "الاسم",
+        waPhone: "الهاتف",
+        waParty: "عدد الأشخاص",
+        waEvent: "الفعالية",
+        waTier: "نوع الدخول",
+        waSource: "رمز المصدر",
+        waDirect: "direct",
         desk: "للطاولات أو أي سؤال: واتساب {DESK}",
         calLead: "أضف إلى التقويم",
         calGoogle: "تقويم Google",
@@ -1372,7 +1397,43 @@
       };
     }
 
-    function showSuccess(payload, duplicate) {
+    function waDeskDigits() {
+      const d = String(CONFIG.whatsappDesk || "+96897773122").replace(/\D/g, "");
+      return /^968\d{8}$/.test(d) ? d : "96897773122";
+    }
+
+    function buildWaUrl(v) {
+      const refInfo = normalizeRef(attr && attr.rawRef);
+      const tierSel = document.getElementById("entryTier");
+      const tierText = tierSel && tierSel.selectedOptions && tierSel.selectedOptions[0] ? tierSel.selectedOptions[0].textContent.trim() : v.entryTier;
+      const evName = eventNameText() || "OmanEvents";
+      const lines = [
+        t("waHello"),
+        t("waName") + ": " + v.name,
+        t("waPhone") + ": " + v.phone,
+        t("waParty") + ": " + v.party,
+        t("waEvent") + ": " + evName + " - " + formatDate(v.eventDate),
+        t("waTier") + ": " + tierText,
+        t("waSource") + ": " + (refInfo.valid ? refInfo.normalized : t("waDirect"))
+      ];
+      return "https://wa.me/" + waDeskDigits() + "?text=" + encodeURIComponent(lines.join("\n"));
+    }
+
+    function openWhatsApp(url) {
+      let w = null;
+      try { w = window.open(url, "_blank"); } catch (e) { w = null; }
+      if (w) { try { w.opener = null; } catch (e) {} return; }
+      window.location.href = url;
+    }
+
+    // Fallback when the Apps Script endpoint is empty or unreachable: no signup is lost.
+    function whatsappFallback(v) {
+      const url = buildWaUrl(v);
+      showSuccess({ name: v.name, eventDate: v.eventDate, whatsappConsent: false }, false, url);
+      openWhatsApp(url);
+    }
+
+    function showSuccess(payload, duplicate, waUrl) {
       document.getElementById("form-card").hidden = true;
       const hero = document.querySelector(".hero");
       if (hero) hero.hidden = true;
@@ -1393,6 +1454,16 @@
       }
       document.getElementById("success-body").textContent = body;
       document.getElementById("success-wa").textContent = payload.whatsappConsent ? t("successWaYes") : t("successWaNo");
+      const lock = document.getElementById("wa-lock");
+      if (waUrl) {
+        document.getElementById("success-title").textContent = t("waTitle");
+        document.getElementById("success-body").textContent = t("waLock");
+        document.getElementById("success-wa").textContent = (eventNameText() || "OmanEvents") + " · " + formatDate(payload.eventDate);
+        document.getElementById("wa-open").href = waUrl;
+        lock.style.display = "";
+      } else {
+        lock.style.display = "none";
+      }
       document.getElementById("success-desk").textContent = withDesk(t("desk"));
       const heading = document.getElementById("success-title");
       heading.focus();
@@ -1412,15 +1483,19 @@
       }
       const endpoint = String(CONFIG.endpointUrl || "").trim();
       if (!endpoint) {
-        showFormError(withDesk(t("errEndpoint")));
+        whatsappFallback(v);
         return;
       }
       const payload = buildPayload(v);
       const btn = document.getElementById("submit-btn");
       btn.disabled = true;
       btn.textContent = t("submitting");
+      let failed = false;
+      const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+      const timer = ctrl ? setTimeout(() => ctrl.abort(), 12000) : null;
       try {
         const res = await fetch(endpoint, {
+          signal: ctrl ? ctrl.signal : undefined,
           method: "POST",
           mode: "cors",
           credentials: "omit",
@@ -1430,17 +1505,22 @@
         });
         let data = {};
         try { data = await res.json(); } catch (e) { data = {}; }
-        if (!res.ok || data.ok === false) {
+        if (!res.ok) {
+          failed = true;
+        } else if (data.ok === false) {
           showFormError(data.message ? data.message : withDesk(t("errNetwork")));
           return;
+        } else {
+          showSuccess(payload, !!data.duplicate);
         }
-        showSuccess(payload, !!data.duplicate);
       } catch (err) {
-        showFormError(withDesk(t("errNetwork")));
+        failed = true;
       } finally {
+        if (timer) clearTimeout(timer);
         btn.disabled = false;
         btn.textContent = t("submit");
       }
+      if (failed) whatsappFallback(v);
     }
 
     function detectLang() {
