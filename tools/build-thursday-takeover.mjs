@@ -14,14 +14,14 @@ const DESK = "+968 9777 3122";
 const L = {
   en: {
     dir: "ltr", lang: "en", url: BASE, otherUrl: BASE + "ar/", ics: "thursday-takeover.ics",
-    title: "THURSDAY TAKEOVER — Thu 19 Nov 2026 · Le Blue Muscat | Oman Events",
-    desc: "THURSDAY TAKEOVER at Le Blue Muscat, Qurum Resort. Thursday 19 Nov 2026, 11 PM till late. SADO, POOYA & KRAZY on the decks, MC CHYDON on the mic, MARALNI on live drums. Join the guest list.",
-    ogLocale: "en_US", ogAlt: "Flyer: THURSDAY TAKEOVER at Le Blue Muscat, Qurum Resort. 19 November 2026, 11 PM till late.",
+    title: "THURSDAY TAKE OVER — Thu 19 Nov 2026 · Le Blue Muscat | Oman Events",
+    desc: "THURSDAY TAKE OVER at Le Blue Muscat, Qurum Resort. Thursday 19 Nov 2026, 11 PM till late. SADO, POOYA & KRAZY on the decks, MC CHYDON on the mic, MARALNI on live drums. Join the guest list.",
+    ogLocale: "en_US", ogAlt: "Flyer: THURSDAY TAKE OVER at Le Blue Muscat, Qurum Resort. 19 November 2026, 11 PM till late.",
     brand: "OMAN EVENTS", brandSub: "Live Entertainment",
     kicker: "Le Blue Muscat · Qurum Resort",
     dayName: "Thursday", monthYear: "November 2026", time: "11 PM till late",
     join: "Join the guest list", wa: "WhatsApp",
-    posterAlt: "Flyer for THURSDAY TAKEOVER at Le Blue Muscat. 19 November 2026, 11 PM till late, Qurum Resort. SADO, POOYA and KRAZY, MC Chydon and Maralni on drums.",
+    posterAlt: "Flyer for THURSDAY TAKE OVER at Le Blue Muscat. 19 November 2026, 11 PM till late, Qurum Resort. SADO, POOYA and KRAZY, MC Chydon and Maralni on drums.",
     lineupH: "Lineup", tagline: "Good music. Better nights.",
     acts: [["SADO, POOYA & KRAZY", "On the decks"], ["MC CHYDON", "On the mic"], ["MARALNI", "On live drums"]],
     detailsH: "The details",
@@ -29,20 +29,20 @@ const L = {
     finalH: "Get on the guest list.", finalP: "Add your name online, or message us on WhatsApp.",
     calLead: "Add to calendar", calGoogle: "Google Calendar", calIcs: "Apple / Outlook (.ics)",
     footer: "Questions: WhatsApp {DESK}", langLabel: "Language", toggleOther: "عربي", toggleOtherLang: "ar", toggleSelf: "EN",
-    calTitle: "THURSDAY TAKEOVER \u2014 Oman Events", calLoc: "Le Blue Muscat, Qurum Resort, Muscat",
+    calTitle: "THURSDAY TAKE OVER \u2014 Oman Events", calLoc: "Le Blue Muscat, Qurum Resort, Muscat",
     calDesc: "Lineup: SADO, POOYA & KRAZY (decks), MC CHYDON (mic), MARALNI (live drums)\nGuest list: " + GUESTLIST,
     gl: GUESTLIST
   },
   ar: {
     dir: "rtl", lang: "ar", url: BASE + "ar/", otherUrl: BASE, ics: "../thursday-takeover-ar.ics",
-    title: "THURSDAY TAKEOVER — الخميس 19 نوفمبر 2026 · Le Blue Muscat | عمان إيفنتس",
-    desc: "THURSDAY TAKEOVER في Le Blue Muscat، منتجع القرم. الخميس 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر. SADO وPOOYA وKRAZY على الديكس، وMC CHYDON على المايك، وMARALNI على الدرامز لايف. سجّل اسمك على قائمة الضيوف.",
-    ogLocale: "ar_AR", ogAlt: "فلاير THURSDAY TAKEOVER في Le Blue Muscat، منتجع القرم. 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر.",
+    title: "THURSDAY TAKE OVER — الخميس 19 نوفمبر 2026 · Le Blue Muscat | عمان إيفنتس",
+    desc: "THURSDAY TAKE OVER في Le Blue Muscat، منتجع القرم. الخميس 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر. SADO وPOOYA وKRAZY على الديكس، وMC CHYDON على المايك، وMARALNI على الدرامز لايف. سجّل اسمك على قائمة الضيوف.",
+    ogLocale: "ar_AR", ogAlt: "فلاير THURSDAY TAKE OVER في Le Blue Muscat، منتجع القرم. 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر.",
     brand: "OMAN EVENTS", brandSub: "Live Entertainment",
     kicker: "Le Blue Muscat · منتجع القرم",
     dayName: "الخميس", monthYear: "نوفمبر 2026", time: "من ١١ مساءً حتى وقت متأخر",
     join: "انضم إلى قائمة الضيوف", wa: "واتساب",
-    posterAlt: "فلاير THURSDAY TAKEOVER في Le Blue Muscat. 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر، منتجع القرم. SADO وPOOYA وKRAZY وMC Chydon وMaralni على الدرامز.",
+    posterAlt: "فلاير THURSDAY TAKE OVER في Le Blue Muscat. 19 نوفمبر 2026، من ١١ مساءً حتى وقت متأخر، منتجع القرم. SADO وPOOYA وKRAZY وMC Chydon وMaralni على الدرامز.",
     lineupH: "اللاين أب", tagline: "موسيقى جيدة. ليالٍ أفضل.",
     acts: [["SADO, POOYA & KRAZY", "على الديكس"], ["MC CHYDON", "على المايك"], ["MARALNI", "على الدرامز لايف"]],
     detailsH: "التفاصيل",
@@ -50,7 +50,7 @@ const L = {
     finalH: "سجّل اسمك على قائمة الضيوف.", finalP: "سجّل اسمك أونلاين، أو راسلنا على واتساب.",
     calLead: "أضف إلى التقويم", calGoogle: "تقويم Google", calIcs: "Apple / Outlook (.ics)",
     footer: "للاستفسار: واتساب {DESK}", langLabel: "اللغة", toggleOther: "EN", toggleOtherLang: "en", toggleSelf: "عربي",
-    calTitle: "THURSDAY TAKEOVER \u2014 عمان إيفنتس", calLoc: "Le Blue Muscat، منتجع القرم، مسقط",
+    calTitle: "THURSDAY TAKE OVER \u2014 عمان إيفنتس", calLoc: "Le Blue Muscat، منتجع القرم، مسقط",
     calDesc: "اللاين أب: SADO، POOYA & KRAZY (ديكس)، MC CHYDON (مايك)، MARALNI (درامز لايف)\nقائمة الضيوف: " + GUESTLIST,
     gl: GUESTLIST
   }
@@ -94,8 +94,8 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:1re
 
 .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem;padding:1.75rem 0 2.5rem}
 .kicker{color:var(--silver);font-size:.95rem;letter-spacing:.04em}
-h1{font-family:var(--serif);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:clamp(2.7rem,12.5vw,5.5rem);margin:.6rem 0 1.4rem}
-h1 span{display:block}
+h1{font-family:var(--serif);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:.01em;font-size:clamp(2.5rem,11.5vw,5.5rem);margin:.6rem 0 1.4rem}
+h1 span{display:block;white-space:nowrap}
 h1 .gold{color:var(--gold)}
 html[dir="rtl"] h1{direction:ltr;text-align:right}
 .when{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem;position:relative;z-index:3}
@@ -182,7 +182,7 @@ function page(k) {
   const toggle = k === "en" ? selfLang + otherLang : otherLang + selfLang;
   const ld = {
     "@context": "https://schema.org", "@type": "Event",
-    name: "THURSDAY TAKEOVER",
+    name: "THURSDAY TAKE OVER",
     description: L.en.desc,
     startDate: "2026-11-19T23:00+04:00",
     eventStatus: "https://schema.org/EventScheduled",
@@ -250,7 +250,7 @@ ${JSON.stringify(ld, null, 2)}
     <section class="hero">
       <div class="hero-copy">
         <p class="kicker">${esc(c.kicker)}</p>
-        <h1><span>THURSDAY</span> <span class="gold">TAKEOVER</span></h1>
+        <h1><span>THURSDAY</span> <span class="gold">TAKE OVER</span></h1>
         <div class="when">
           <span class="day" aria-hidden="true">19</span>
           <p class="when-text"><span>${esc(c.dayName)} 19 ${esc(c.monthYear)}</span><span class="time">${esc(c.time)}</span></p>

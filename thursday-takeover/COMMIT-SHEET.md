@@ -1,4 +1,4 @@
-# COMMIT-SHEET — THURSDAY TAKEOVER event page (omanevents112.github.io/guestlist/thursday-takeover/)
+# COMMIT-SHEET — THURSDAY TAKE OVER event page (omanevents112.github.io/guestlist/thursday-takeover/)
 
 Register: **build** (standalone event page). Method: auteur 1.3.1 (`auteur-web-direction`). Written before any markup.
 Interim canonical event page while omanevents.live (Manus) cannot be edited. Must sit next to the guest-list page and look like the same house.

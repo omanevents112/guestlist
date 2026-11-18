@@ -16,7 +16,7 @@ Move finished tasks to **Done** with the commit link.
 - [2026-11-17] GitKeeper: Enable branch protection on main after Thursday's deploys (needs Mohammed's OK) — commit: pending
 
 ## Done
-- [2026-11-18] WebMaster: Standalone THURSDAY TAKEOVER event page (EN + AR) at /thursday-takeover/, auteur commit-sheet + gates; interim canonical page while omanevents.live is on Manus — commit: this commit
+- [2026-11-18] WebMaster: Standalone THURSDAY TAKE OVER event page (EN + AR) at /thursday-takeover/, auteur commit-sheet + gates; interim canonical page while omanevents.live is on Manus — commit: this commit
 - [2026-11-17] GitKeeper: Neutralise spreadsheet formula injection in Code.gs (`safeCell_`) — commit: this PR
 - [2026-11-17] GitKeeper: 404 page back link now points to /guestlist/ — commit: this PR
 - [2026-11-17] GitKeeper: 44px tap targets for language toggle and consent checkboxes — commit: this PR
