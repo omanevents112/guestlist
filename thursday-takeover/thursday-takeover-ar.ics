@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//OmanEvents//Thursday Takeover//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:thursday-takeover-20261119-ar@omanevents112.github.io
+DTSTAMP:20261118T100000Z
+DTSTART:20261119T190000Z
+DTEND:20261119T230000Z
+SUMMARY:THURSDAY TAKEOVER — عمان إيفنتس
+LOCATION:Le Blue Muscat، منتجع القرم، مسقط
+DESCRIPTION:اللاين أب: SADO، POOYA & KRAZY (ديكس)، MC CH
+ YDON (مايك)، MARALNI (درامز لايف)\nقائمة الضي
+ وف: https://omanevents112.github.io/guestlist/
+URL:https://omanevents112.github.io/guestlist/thursday-takeover/ar/
+END:VEVENT
+END:VCALENDAR
