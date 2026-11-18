@@ -665,18 +665,6 @@
           <span class="field-error" data-i18n="errInterest">Please choose an event interest.</span>
         </div>
 
-        <div class="field" data-field="entryTier">
-          <label for="entryTier" data-i18n="entryTier">Entry tier</label>
-          <select id="entryTier" name="entryTier" required>
-            <option value="" data-i18n="selectOne">Please select</option>
-            <option value="Guest list" data-i18n="tierGuest">Guest list</option>
-            <option value="Table" data-i18n="tierTable">Table</option>
-            <option value="Walk-in" data-i18n="tierWalk">Walk-in</option>
-          </select>
-          <span class="hint" data-i18n="tierHint">Table requests are confirmed on WhatsApp only if you opted in; otherwise we note it for the door.</span>
-          <span class="field-error" data-i18n="errTier">Please choose an entry tier.</span>
-        </div>
-
         <div class="field" data-field="partySize">
           <label for="partySize" data-i18n="partySize">Party size</label>
           <input id="partySize" name="partySize" type="number" inputmode="numeric" min="1" max="20" step="1" required value="1">
@@ -750,6 +738,7 @@
       whatsappDesk: "+96897773122"
     };
 
+    const ENTRY_TIER = "Guest list"; // value Code.gs ALLOWED_TIER accepts
     const REF_RE = /^OE-[A-Z0-9]{4,8}$/;
     const SOURCE_RE = /^(DESK|IG-BIO|WA-STORY|REF|ADMIN-\d{2}|PROMO-\d{2}|VENUE-\d{2}|LIST-\d{2}|POST-\d{2})$/;
     const ATTR_KEY = "oe_guestlist_attr";
@@ -782,11 +771,6 @@
         intIntl: "International",
         intThis: "This Thursday only",
         intSure: "Not sure yet",
-        entryTier: "Entry tier",
-        tierGuest: "Guest list",
-        tierTable: "Table",
-        tierWalk: "Walk-in",
-        tierHint: "Table requests are confirmed on WhatsApp only if you opted in; otherwise we note it for the door.",
         partySize: "Party size",
         partyHint: "How many people, including you?",
         instagram: "Instagram handle (optional)",
@@ -809,7 +793,6 @@
         errPhone: "Use +968 then 8 digits, no spaces. Example: +96897773122",
         errHear: "Please tell us how you heard about us.",
         errInterest: "Please choose an event interest.",
-        errTier: "Please choose an entry tier.",
         errParty: "Party size must be between 1 and 20.",
         errIg: "Please enter a valid Instagram handle.",
         errRules: "Please accept to continue: valid ID and the venue's entry rules.",
@@ -830,7 +813,6 @@
         waPhone: "Phone",
         waParty: "Party size",
         waEvent: "Event",
-        waTier: "Entry",
         waSource: "Source code",
         waDirect: "direct",
         calLead: "Add to calendar",
@@ -866,11 +848,6 @@
         intIntl: "عالمي",
         intThis: "هذا الخميس فقط",
         intSure: "لست متأكداً بعد",
-        entryTier: "نوع الدخول",
-        tierGuest: "قائمة الضيوف",
-        tierTable: "طاولة",
-        tierWalk: "دخول مباشر",
-        tierHint: "طلبات الطاولات تتأكد على واتساب فقط إذا وافقت على الرسائل؛ وإلا نسجّلها للباب.",
         partySize: "عدد الأشخاص",
         partyHint: "كم شخص، بما فيك أنت؟",
         instagram: "حساب إنستغرام (اختياري)",
@@ -893,7 +870,6 @@
         errPhone: "استخدم +968 ثم 8 أرقام بدون مسافات. مثال: +96897773122",
         errHear: "الرجاء إخبارنا كيف سمعت عنا.",
         errInterest: "الرجاء اختيار اهتمامك.",
-        errTier: "الرجاء اختيار نوع الدخول.",
         errParty: "عدد الأشخاص يجب أن يكون بين 1 و 20.",
         errIg: "الرجاء إدخال حساب إنستغرام صحيح.",
         errRules: "يرجى الموافقة للمتابعة: إثبات هوية ساري وشروط الدخول للمكان.",
@@ -914,7 +890,6 @@
         waPhone: "الهاتف",
         waParty: "عدد الأشخاص",
         waEvent: "الفعالية",
-        waTier: "نوع الدخول",
         waSource: "رمز المصدر",
         waDirect: "direct",
         calLead: "أضف إلى التقويم",
@@ -1353,8 +1328,8 @@
       if (!howHeard) { showFieldError("howHeard"); errors.push("howHeard"); }
       const eventInterest = document.getElementById("eventInterest").value;
       if (!eventInterest) { showFieldError("eventInterest"); errors.push("eventInterest"); }
-      const entryTier = document.getElementById("entryTier").value;
-      if (!entryTier) { showFieldError("entryTier"); errors.push("entryTier"); }
+      // Guest list only (tables are off): tier is fixed, no selector.
+      const entryTier = ENTRY_TIER;
       const party = parseInt(document.getElementById("partySize").value, 10);
       if (!isFinite(party) || party < 1 || party > 20) { showFieldError("partySize"); errors.push("partySize"); }
       const ig = normalizeInstagram(document.getElementById("instagram").value);
@@ -1399,8 +1374,6 @@
 
     function buildWaUrl(v) {
       const refInfo = normalizeRef(attr && attr.rawRef);
-      const tierSel = document.getElementById("entryTier");
-      const tierText = tierSel && tierSel.selectedOptions && tierSel.selectedOptions[0] ? tierSel.selectedOptions[0].textContent.trim() : v.entryTier;
       const evName = eventNameText() || "OmanEvents";
       const lines = [
         t("waHello"),
@@ -1408,7 +1381,6 @@
         t("waPhone") + ": " + v.phone,
         t("waParty") + ": " + v.party,
         t("waEvent") + ": " + evName + " - " + formatDate(v.eventDate),
-        t("waTier") + ": " + tierText,
         t("waSource") + ": " + (refInfo.valid ? refInfo.normalized : t("waDirect"))
       ];
       return "https://wa.me/" + waDeskDigits() + "?text=" + encodeURIComponent(lines.join("\n"));
