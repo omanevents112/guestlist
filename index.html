@@ -727,7 +727,7 @@
       venue: "Le Blue Muscat, Qurum Resort",
       venueAr: "Le Blue Muscat، منتجع القرم",
       time: "11 PM till late",
-      timeAr: "من ١١ مساءً حتى وقت متأخر",
+      timeAr: "من 11 مساءً حتى وقت متأخر",
       lineup: "SADO, POOYA & KRAZY, MC CHYDON, and MARALNI on live drums",
       lineupAr: "SADO، POOYA & KRAZY، MC CHYDON، وMARALNI على الدرامز لايف",
       price: "",
@@ -852,8 +852,8 @@
         partyHint: "كم شخص، بما فيك أنت؟",
         instagram: "حساب إنستغرام (اختياري)",
         namePh: "الاسم على قائمة الباب",
-        phonePh: "٩٧٧٧٣١٢٢",
-        partyPh: "١",
+        phonePh: "97773122",
+        partyPh: "1",
         igPh: "@اسم_حسابك",
         igHint: "اختياري. مثال: @yourname",
         submit: "سجّل في قائمة الضيوف",
@@ -1376,6 +1376,7 @@
       const refInfo = normalizeRef(attr && attr.rawRef);
       const evName = eventNameText() || "OmanEvents";
       const lines = [
+        "GUESTLIST THURSDAY TAKE OVER - " + (refInfo.valid ? refInfo.normalized : "DIRECT"),
         t("waHello"),
         t("waName") + ": " + v.name,
         t("waPhone") + ": " + v.phone,

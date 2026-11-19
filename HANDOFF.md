@@ -27,3 +27,7 @@ Move finished tasks to **Done** with the commit link.
 
 ## Notes (DNS / payments / auth changes, autogit undo events)
 <!-- autogit 'undo' rewinds the remote. That is Mohammed's tool, not a policy breach; log each occurrence here with date and the SHAs before/after. Mohammed works on Windows (mind CRLF line endings and path casing). -->
+
+- [2026-11-19] WebMaster: Western digits in all Arabic copy (timeAr "من 11 مساءً", placeholders, takeover AR page). WhatsApp fallback (used while endpointUrl is empty or the endpoint fails) now starts with "GUESTLIST THURSDAY TAKE OVER - <REF>" and carries name, phone, party and ref to wa.me/96897773122.
+- [2026-11-19] WebMaster: When Mohammed gives the Apps Script /exec URL, this is the one-line change (config.json only): `python3 -c "import json;p='config.json';d=json.load(open(p));d['endpointUrl']='<EXEC_URL>';json.dump(d,open(p,'w'),ensure_ascii=False,indent=2)"`, then commit and push. Then test a signup with ref OE-TEST.
+
