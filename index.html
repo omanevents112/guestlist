@@ -797,6 +797,8 @@
         errIg: "Please enter a valid Instagram handle.",
         errRules: "Please accept to continue: valid ID and the venue's entry rules.",
         errEndpoint: "Signups are not open on this page yet. Please try again later or WhatsApp {DESK}.",
+        closedNotice: "This date has passed. The next date will be announced soon. Questions: WhatsApp {DESK}.",
+        closedBtn: "Next date coming soon",
         errNetwork: "Something went wrong. Please try again, or WhatsApp {DESK}.",
         errGeneric: "Please check the form and try again.",
         already: "You are already on the guest list for this night.",
@@ -874,6 +876,8 @@
         errIg: "الرجاء إدخال حساب إنستغرام صحيح.",
         errRules: "يرجى الموافقة للمتابعة: إثبات هوية ساري وشروط الدخول للمكان.",
         errEndpoint: "التسجيل غير متاح على هذه الصفحة حالياً. حاول لاحقاً أو راسلنا على واتساب {DESK}.",
+        closedNotice: "انتهى هذا الموعد. سيتم الإعلان عن الموعد القادم قريباً. للاستفسار: واتساب {DESK}.",
+        closedBtn: "الموعد القادم قريباً",
         errNetwork: "حدث خطأ. حاول مرة أخرى، أو راسلنا على واتساب {DESK}.",
         errGeneric: "الرجاء مراجعة النموذج والمحاولة مرة أخرى.",
         already: "أنت أصلاً على قائمة الضيوف لهذه الليلة.",
@@ -971,6 +975,7 @@
       renderMeta();
       fillDates();
       updateActions();
+      applyClosedState();
     }
 
     function localized(enKey, arKey) {
@@ -1089,12 +1094,38 @@
       if (price) root.appendChild(metaItem(t("metaPrice"), price, false));
     }
 
+    // Today's date in Muscat (UTC+4) as YYYY-MM-DD. An event night runs until 03:00, so a date stays open until 03:00 the next morning.
+    function muscatToday() {
+      const shifted = new Date(Date.now() + (4 * 60 - 3 * 60) * 60000);
+      return shifted.toISOString().slice(0, 10);
+    }
+
+    function allDates() {
+      return ((CONFIG.eventDates && CONFIG.eventDates.length) ? CONFIG.eventDates : [CONFIG.eventDate]).filter(Boolean);
+    }
+
+    function upcomingDates() {
+      const today = muscatToday();
+      return allDates().filter((d) => String(d) >= today);
+    }
+
+    function isClosed() {
+      return allDates().length > 0 && upcomingDates().length === 0;
+    }
+
+    function applyClosedState() {
+      if (!isClosed()) return;
+      const btn = document.getElementById("submit-btn");
+      if (btn) { btn.disabled = true; btn.textContent = t("closedBtn"); }
+      showFormError(withDesk(t("closedNotice")));
+    }
+
     function fillDates() {
       const sel = document.getElementById("eventDate");
       if (!sel) return;
       const current = sel.value || CONFIG.eventDate;
       sel.innerHTML = "";
-      const dates = (CONFIG.eventDates && CONFIG.eventDates.length) ? CONFIG.eventDates : [CONFIG.eventDate];
+      const dates = upcomingDates();
       dates.forEach((d) => {
         const opt = document.createElement("option");
         opt.value = d;
@@ -1438,6 +1469,7 @@
 
     async function onSubmit(ev) {
       ev.preventDefault();
+      if (isClosed()) { applyClosedState(); return; }
       const v = validate();
       if (!v.ok) {
         showFormError(t("errGeneric"));
@@ -1525,6 +1557,7 @@
       document.getElementById("eventDate").addEventListener("change", updateActions);
       document.querySelectorAll("[data-cal='ics']").forEach((a) => a.addEventListener("click", onIcsClick));
       updateActions();
+      applyClosedState();
       window.__OE_GUESTLIST__ = {
         getConfig: () => CONFIG,
         getAttr: () => attr,
